@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+      integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+    <title>MY ONLINE FOOD</title>
+  </head>
+  <style>
+    body {
+      background-color: black;
+      color: white;
+    }
+    body::before {
+      content: '';
+      background: url({% block background %}' https://cheetay-prod-media.s3.amazonaws.com/production/media/images/partners/2019/11/Super-Grill-Burger.jpg'{% endblock %})
+        no-repeat center center/cover;
+
+      position: fixed;
+      width: 100%;
+      height: 100%;
+
+      z-index: -1;
+      opacity: 0.45;
+    }
+    #centered {
+      margin-top: 25%;
+      width: 200px;
+    }
+    footer {
+      position: fixed;
+      width: 100%;
+      bottom: 0;
+    }
+  </style>
+  <body>
+
+    <!-- NAVIGATION BAR -->
+    <nav id="home" class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="{% url 'food_app:main-page' %}">
+          MY ONLINE FOOD
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a
+                class="nav-link active"
+                aria-current="page"
+                href="http://localhost/project/project.php"
+              >
+                Home
+              </a>
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link active"
+                href="{% url 'food_app:services-page' %}"
+              >
+                Services
+              </a>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle active"
+                href="#"
+                id="navbarDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                More
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="http://localhost/project/contact.php"
+                  >
+                    Contact us
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="http://localhost/project/menu.php"
+                  >
+                    Menu
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a
+                class="btn btn-danger"
+                aria-current="page"
+                href="http://localhost/project/addorder.php"
+              >
+                ORDER NOW
+              </a>
+            </li>
+          </ul>
+
+          <a
+            class="btn btn-warning mr-5"
+            href="http://localhost/project/admin.php"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              class="bi bi-lock"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2zM5 8h6a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"
+              />
+            </svg>
+            ADMIN
+          </a>
+          <a
+            href="http://localhost/project/addorder.php"
+            class="btn btn-success"
+          >
+            <i class="fa fa-shopping-cart"></i>
+          </a>
+        </div>
+      </div>
+    </nav>
+    <!-- NAVBAR END -->
+    {% block body %}
+    <div class="container">
+      <div class="row">
+        <div class="row justify-content-center">
+          <a
+            id="centered"
+            class="btn btn-danger"
+            href="http://localhost/project/menu.php"
+          >
+            MENU
+          </a>
+        </div>
+      </div>
+    </div>
+    {% endblock %}
+    <footer class="bg-light text-center text-lg-start">
+      <div class="text-center p-3" style="background-color: black;">
+        © 2021 Copyright:
+        <a class="text-light" href="#">MY ONLINE FOOD</a>
+      </div>
+    </footer>
+  </body>
+</html>
