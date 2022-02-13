@@ -1,0 +1,56 @@
+{% extends 'project.html' %}
+{% load static %}
+{% block background %} 'https://miro.medium.com/max/1838/1*oArGDunPxVeMwiIS53bivQ.jpeg' {% endblock %}
+{% block style %}
+
+<script>
+    window.setTimeout(function () {
+            $(".alert").fadeTo(500, 0).slideUp(500, function () {
+                $(this).remove();
+            });
+        }, 1500);
+</script>
+
+{% endblock %}
+
+{% block body %}
+<br><br>
+
+<form method="POST" style="margin-bottom: 100px; margin-top: -30px">
+    <div class="container">
+        {% if message %}
+        <div class="alert alert-success alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                    aria-hidden="true">&times;</span></button>
+            <strong>Added!</strong> Item Added to Cart..
+        </div>
+        {% endif %}
+
+        <div class="row">
+            {% for food in foods %}
+            <div class="col-4">
+                <div class="card-group mt-5">
+                    <div class="card  me-3">
+                        <img class="card-img-top" height="200px" src="{{ food.image.url }}" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title" style="color:black;">{{ food.name }}</h5>
+                            <p1 class="card-title" style="color:black;"><b>Rs. {{ food.price }}/-</b></p1>
+                            <a href="{% url 'food_app:cart-items' food.id %}">
+                                <button type="button" class="btn btn-success" style="float: right">ADD TO CART</button>
+                            </a>
+                        </div>
+                    </div>
+                    <br>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+    </div>
+
+</form>
+
+{% endblock %}
+
+
+

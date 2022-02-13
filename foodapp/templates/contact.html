@@ -1,0 +1,43 @@
+{% extends 'project.html' %}
+{% load static %}
+{% block background %} 'https://miro.medium.com/max/1838/1*oArGDunPxVeMwiIS53bivQ.jpeg' {% endblock %}
+{% block style %}
+
+<script>
+    window.setTimeout(function () {
+            $(".alert").fadeTo(500, 0).slideUp(500, function () {
+                $(this).remove();
+            });
+        }, 1500);
+</script>
+
+{% endblock %}
+
+{% block body %}
+
+<div class="container" style="margin-top: 100px">
+  {% if message %}
+        <div class="alert alert-success alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                    aria-hidden="true">&times;</span></button>
+            <strong>Submitted!</strong> Thank for Contact Us..
+        </div>
+        {% endif %}
+<form method="POST">
+  {% csrf_token %}
+  <div class="form-group">
+    <label for="email">Email address</label>
+    <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email">
+    <small id="emailHelp" class="form-text" style="color:white";   >We'll never share your email with anyone else.</small>
+  </div>
+  <div class="form-group">
+    <label for="query">Concern :</label>
+    <textarea  id="" cols="30" rows="5" type="text" name="query" class="form-control" id="query" placeholder="Enter your concern"></textarea>
+  </div>
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+</div>
+
+{% endblock %}

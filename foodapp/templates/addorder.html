@@ -1,0 +1,68 @@
+{% extends 'project.html' %}
+{% load static %}
+{% block background %} 'https://miro.medium.com/max/1838/1*oArGDunPxVeMwiIS53bivQ.jpeg' {% endblock %}
+
+{% block style %}
+<script>
+    window.setTimeout(function () {
+            $(".alert").fadeTo(500, 0).slideUp(500, function () {
+                $(this).remove();
+            });
+        }, 1500);
+</script>
+{% endblock %}
+
+
+{% block body %}
+<div class="container m-5">
+    {% if message %}
+    <div class="alert alert-danger alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                aria-hidden="true">&times;</span></button>
+        <strong>Deleted!</strong> Item Deleted Successfully..
+    </div>
+    {% endif %}
+    <h2>Orders</h2>
+    <table id="myTable" class="table table-bordered table-light table-striped mt-3">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Price RS.</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for cart in cart_item %}
+        <tr>
+            <th>{{ forloop.counter }}</th>
+            <td>{{ cart.food.name }}</td>
+            <td>{{ cart.food.description }}</td>
+            <td>{{ cart.food.price }}</td>
+            <form method="post" action="{% url 'food_app:cart-items' cart.id %}">
+                {% csrf_token %}
+                <td>
+                    <button type="submit" class="btn btn-danger sm"><i class="fa fa-trash sm"></i></button>
+                </td>
+            </form>
+        </tr>
+        {% endfor %}
+        <tr>
+            <th colspan="3" style="text-align: center">Total Amount</th>
+            <th>{{ price_sum }}</th>
+            <td></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<br>
+<div class="container m-2 ml-5">
+        <a href="{% url 'food_app:confirm-order' %}">
+        <button class="btn btn-success">CONFIRM ORDER</button>
+        </a>
+    <br><br><br><br><br><br>
+</div>
+
+
+{% endblock %}
